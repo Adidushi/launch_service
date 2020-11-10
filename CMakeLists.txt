@@ -63,7 +63,9 @@ catkin_python_setup()
 ## Generate services in the 'srv' folder
  add_service_files(
    FILES
-   str.srv
+   launchrequest.srv
+   killrequest.srv
+   killallrequest.srv
  )
 
 ## Generate actions in the 'action' folder
