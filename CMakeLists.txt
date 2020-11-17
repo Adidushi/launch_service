@@ -64,6 +64,7 @@ catkin_python_setup()
  add_service_files(
    FILES
    launchrequest.srv
+   runrequest.srv
    killrequest.srv
    killallrequest.srv
  )
