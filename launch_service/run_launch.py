@@ -20,6 +20,8 @@ class LaunchService:
         package, filename, args = data.package, data.file, data.args
 
         command = ["roslaunch", package, filename, args]
+        if data.args == "":
+            command = ["roslaunch", package, filename]
         if data.file == "" and data.args == "":
             command = ["roslaunch", package]
         self.services[self.counter] = subprocess.Popen(command)
