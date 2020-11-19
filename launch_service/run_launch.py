@@ -18,7 +18,10 @@ class LaunchService:
 
     def launch_file(self, data):
         package, filename, args = data.package, data.file, data.args
+
         command = ["roslaunch", package, filename, args]
+        if data.file == "" and data.args == "":
+            command = ["roslaunch", package]
         self.services[self.counter] = subprocess.Popen(command)
         self.counter += 1
         return self.counter - 1
@@ -26,6 +29,8 @@ class LaunchService:
     def run_file(self, data):
         package, filename, args = data.package, data.file, data.args
         command = ["rosrun", package, filename, args]
+        if data.file == "" and data.args == "":
+            command = ["rosrun", package]
         self.services[self.counter] = subprocess.Popen(command)
         self.counter += 1
         return self.counter - 1
