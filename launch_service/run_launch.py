@@ -9,10 +9,12 @@ class LaunchService:
         self.services = {}
 
         rospy.init_node('launch_service')
-        launch = rospy.Service('launch_service', launchrequest, self.launch_file)
-        run = rospy.Service('run_service', runrequest, self.run_file)
-        kill = rospy.Service('kill_launch', killrequest, self.kill_process)
-        killall = rospy.Service('kill_all', killallrequest, self.kill_all)
+
+        node_name = rospy.get_name()
+        launch = rospy.Service(node_name + '/launch_service', launchrequest, self.launch_file)
+        run = rospy.Service(node_name + '/run_service', runrequest, self.run_file)
+        kill = rospy.Service(node_name + '/kill_launch', killrequest, self.kill_process)
+        killall = rospy.Service(node_name + '/kill_all', killallrequest, self.kill_all)
         print("Launch service running.")
         rospy.spin()
 

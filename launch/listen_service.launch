@@ -1,3 +1,4 @@
 <launch>
-    <node pkg="launch_service" name="service_listener" type="run_launch.py" output="screen"/>
+    <arg name="name"/>
+    <node pkg="launch_service" name="$(arg name)" type="run_launch.py" output="screen"/>
 </launch>
